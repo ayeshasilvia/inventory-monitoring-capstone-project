@@ -17,12 +17,13 @@ Inventory monitoring is a crucial job at any distribution centers. Many distribu
 
 ### Datasets and Inputs
 
-To complete this project I will be using the Amazon Bin Image Dataset. The dataset contains 500,000 images of bins containing one or more objects. For each image there is a metadata file containing information about the image like the number of objects, it's dimension and the type of object. For this task, I will try to classify the number of objects in each bin. The images are available here: s3://aft-vbi-pds/bin-images/ 
+To complete this project I will be using the Amazon Bin Image Dataset. The dataset contains 500,000 images of bins containing one or more objects. For each image there is a metadata file containing information about the image like the number of objects, it's dimension and the type of object. For this task, I will try to classify the number of objects in each bin. The images are available here: s3://aft-vbi-pds/bin-images/. Images are located in the bin-images directory, and metadata for each image is located in the metadata directory. Images and their associated metadata share simple numerical unique identifiers. For example, the metadata for the image at https://aft-vbi-pds.s3.amazonaws.com/bin-images/523.jpg is found at https://aft-vbi-pds.s3.amazonaws.com/metadata/523.json.
+
 Following is an example image:
 
 ![alt](https://aft-vbi-pds.s3.amazonaws.com/bin-images/523.jpg)
 
-Following is a sample metadata file:
+Following is the corresponding metadata file:
 ```
 {
     "BIN_FCSKU_DATA": {
@@ -105,10 +106,5 @@ I will then compare the performance of these two models.
 
 -----------
 
-**Before submitting your proposal, ask yourself. . .**
-
-- Does the proposal you have written follow a well-organized structure similar to that of the project template?
-- Is each section (particularly **Solution Statement** and **Project Design**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
-- Would the intended audience of your project be able to understand your proposal?
-- Have you properly proofread your proposal to assure there are minimal grammatical and spelling mistakes?
-- Are all the resources used for this project correctly cited and referenced?
+References:
+Amazon Bin Image Dataset was accessed on 10th March 2023 from https://registry.opendata.aws/amazon-bin-imagery.
