@@ -1,6 +1,8 @@
 # Machine Learning Engineer Nanodegree
 ## Capstone Proposal
-Ayesha Mosaddeque
+
+`Ayesha Mosaddeque`
+
 March 9th, 2023
 
 ## Proposal
@@ -15,32 +17,91 @@ Inventory monitoring is a crucial job at any distribution centers. Many distribu
 
 ### Datasets and Inputs
 
-To complete this project I will be using the Amazon Bin Image Dataset. The dataset contains 500,000 images of bins containing one or more objects. For each image there is a metadata file containing information about the image like the number of objects, it's dimension and the type of object. For this task, I will try to classify the number of objects in each bin. Following is an example image:
+To complete this project I will be using the Amazon Bin Image Dataset. The dataset contains 500,000 images of bins containing one or more objects. For each image there is a metadata file containing information about the image like the number of objects, it's dimension and the type of object. For this task, I will try to classify the number of objects in each bin. The images are available here: s3://aft-vbi-pds/bin-images/ 
+Following is an example image:
 
-<![alt](https://aft-vbi-pds.s3.amazonaws.com/bin-images/523.jpg)>
+![alt](https://aft-vbi-pds.s3.amazonaws.com/bin-images/523.jpg)
 
+Following is a sample metadata file:
+```
+{
+    "BIN_FCSKU_DATA": {
+        "B000A8C5QE": {
+            "asin": "B000A8C5QE",
+            "height": {
+                "unit": "IN",
+                "value": 4.200000000000001
+            },
+            "length": {
+                "unit": "IN",
+                "value": 4.7
+            },
+            "name": "MSR PocketRocket Stove",
+            "quantity": 1,
+            "weight": {
+                "unit": "pounds",
+                "value": 0.45
+            },
+            "width": {
+                "unit": "IN",
+                "value": 4.4
+            }
+        },
+        "B0064LIWVS": {
+            "asin": "B0064LIWVS",
+            "height": {
+                "unit": "IN",
+                "value": 1.2
+            },
+            "length": {
+                "unit": "IN",
+                "value": 5.799999999999999
+            },
+            "name": "Applied Nutrition Liquid Collagen Skin Revitalization, 10 Count 3.35 Fl Ounce",
+            "quantity": 1,
+            "weight": {
+                "unit": "pounds",
+                "value": 0.3499999999999999
+            },
+            "width": {
+                "unit": "IN",
+                "value": 4.7
+            }
+        }
+    },
+    "EXPECTED_QUANTITY": 2,
+    "image_fname": "523.jpg"
+}
+```
+The metadata file contains the expected quantity.
 
 ### Solution Statement
 
 My capstone project is going to be about inevntory monitoring. In this project I will create an Image classification system, which will be able to determine how many objects are present in a certain space at one time. 
 
 
-In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
-
 ### Benchmark Model
-_(approximately 1-2 paragraphs)_
 
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
+For benchmarking,  I will create a simple Convolutional Neural Network model. Using this model, I will calculate the accuracy. Following on from here I will fine tune a pretrained model and compare the result. 
+I am planning on using PyTorch library for creating the CNN model.
 
 ### Evaluation Metrics
-_(approx. 1-2 paragraphs)_
 
-In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
+Evaluation metrics for this project will be two standrad metrics, accuracy(precision) and root mean square error(RMSE). 
+
+![alt](./images/accruacy.png)
+
+![alt](./images/RMSE1.jpg)
 
 ### Project Design
-_(approx. 1 page)_
 
-In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+I will first download the subset of the bin image data ([Amazon Bin Image Dataset](https://registry.opendata.aws/amazon-bin-imagery/)). as suggested. Then I will create train, validation and test split. I plan to make 80% train, 10% validation and 10% test dataset split. 
+
+I will apply some data augmentation (RandomRotation, Resize) on the images while generating the data loaders. I will then train my initial benchmark model. I will calculated accuracy and RMSE of the model.
+
+Following on I will finetune a pretrained model using PyTorch library and I will calculated accuracy and RMSE of the model.
+
+I will then compare the performance of these two models.
 
 -----------
 
