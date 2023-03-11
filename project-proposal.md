@@ -9,7 +9,11 @@ March 9th, 2023
 
 ### Domain Background
 
-We have many e-commerce businesses around us and the main component of any e-commerce or retail business is the inventory. Many businesses own distribution centres and one of the main concerns is the monitoring the stocks. For example, Amazon has their own warehouses and logistics services known as Amazon Fulfillment centre. Among many concerns, inventory monitoring is a significant one.
+Computer Vision is a field of Artificial Intelligence, where a compute system can extract important information from visual inputs like images, videos etc. While Computer Vision may sound like a new idea, it actually began around mid 1960s. We can see its applications in many differnt fields like automotives, manufacturing, retail, healthcare etc. 
+
+Calculating the number of objects present in a visual input is one of the rudimentary tasks of Computer Vision. This has many practical usage like, traffic flow monitoring, surveillance, product counting etc.
+
+This object counting approach can potentially optimize large e-commerce company like Amazon's distribution centre to a great extent.Amazon has their own warehouses and logistics services known as Amazon Fulfillment centre. Among many concerns, inventory monitoring is a significant one. Object counting could imaginably enhance the inventory monitoring system by many folds in this case. Bertorello et al. (2018) has an academic research done in this domain.
 
 ### Problem Statement
 
@@ -76,10 +80,27 @@ Following is the corresponding metadata file:
 ```
 The metadata file contains the expected quantity.
 
+Some statistics on the data:
+
+```Total Images: 10441
+Average expected quantity in a bin: 10441/5: 2088.2
+total images with quantity 1 is 1228
+total images with quantity 2 is 2299
+total images with quantity 3 is 2666
+total images with quantity 4 is 2373
+total images with quantity 5 is 1875
+```
+Showing histogram of quantity distribution:
+
+![alt](./images/histogram.png)
+
 ### Solution Statement
 
 My capstone project is going to be about inevntory monitoring. In this project I will create an Image classification system, which will be able to determine how many objects are present in a certain space at one time. 
 
+The model will be trained and deployed on AWS platform. I intend to use AWS Sagemake studio for implementing the model and other necessary tasks. 
+
+Apart from creating a simple Convolutional Neural Network model, I will also use transfer learning to finetune a pretrained model like resnet.
 
 ### Benchmark Model
 
@@ -107,4 +128,8 @@ I will then compare the performance of these two models.
 -----------
 
 References:
+Bertorello et al. (2018) 
+
+Rodriguez Bertorello, Pablo Martin and Sripada, Sravan and Dendumrongsup, Nutchapol, Amazon Inventory Reconciliation Using AI (December 15, 2018). Available at SSRN: https://ssrn.com/abstract=3311007 or http://dx.doi.org/10.2139/ssrn.3311007
+
 Amazon Bin Image Dataset was accessed on 10th March 2023 from https://registry.opendata.aws/amazon-bin-imagery.
