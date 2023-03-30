@@ -26,7 +26,7 @@ total images with quantity 5 is 1875
 ```
 Showing histogram of quantity distribution:
 
-![alt](./images/histogram.png)
+![alt](./starter/images/histogram.png)
 
 After downloading the data I am reorganizing and splitting the dataset into train, validation and test datasets. Train dataset has 70% of the data and both validation and test datasets have 15% of the data each.
 I am then uploading the data into S3 bucket: `s3://inventory-monitoring-1`
